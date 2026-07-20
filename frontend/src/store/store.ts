@@ -197,7 +197,7 @@ interface SentinelState {
   dismissNotification: (id: string) => void;
   triggerEmergencyAlert: (patientId: string) => void;
   updateBedStatus: (bedId: string, newStatus: "occupied" | "available" | "cleaning", patientName?: string) => void;
-  addEmergencyBed: (department: string) => void;
+  addEmergencyBed: (department?: "ICU" | "Cardiology" | "Pulmonology" | "Neurology" | "General Ward" | "Emergency Care") => void;
   sanitizeAllCleaningBeds: () => void;
 }
 
@@ -1222,12 +1222,12 @@ export const useSentinelStore = create<SentinelState>((set, get) => {
     addEmergencyBed: (department) => {
       set(state => {
         const newBedId = `bed-em-${Date.now()}`;
-        const newBed = {
+        const newBed: HospitalBed = {
           id: newBedId,
           department: department || "ICU",
           roomNumber: `Room-${Math.floor(Math.random()*10 + 1)}`,
           bedNumber: `Bed-${Math.floor(Math.random()*20 + 10)}`,
-          status: "available" as const
+          status: "available"
         };
         return { beds: [...state.beds, newBed] };
       });
