@@ -1,0 +1,318 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Dark Mode HSL Color System */
+  --background: #060709;
+  --foreground: #f4f5f6;
+  --text-muted: #94a3b8;
+  
+  --border: rgba(255, 255, 255, 0.08);
+  --card-bg: rgba(13, 15, 18, 0.65);
+  --card-hover-bg: rgba(22, 25, 30, 0.8);
+  
+  --primary: #10b981; /* Emerald */
+  --primary-hover: #059669;
+  
+  --risk-low: #10b981;       /* Stable Emerald */
+  --risk-medium: #f59e0b;    /* Warning Amber */
+  --risk-high: #f43f5e;      /* Danger Crimson */
+  --risk-critical: #e11d48;  /* Severe Rose */
+  
+  --ai-brand: #6366f1;       /* Indigo Glow */
+  --ai-glow: rgba(99, 102, 241, 0.25);
+  
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+[data-theme="light"] {
+  --background: #f1f5f9;
+  --foreground: #0f172a;
+  --text-muted: #475569;
+  
+  --border: rgba(15, 23, 42, 0.12);
+  --card-bg: #ffffff;
+  --card-hover-bg: #f8fafc;
+  
+  --primary: #059669;
+  --primary-hover: #047857;
+  
+  --risk-low: #059669;
+  --risk-medium: #d97706;
+  --risk-high: #dc2626;
+  --risk-critical: #b91c1c;
+  
+  --ai-brand: #4338ca;
+  --ai-glow: rgba(67, 56, 202, 0.15);
+}
+
+/* Light Theme Component & Utility Overrides */
+[data-theme="light"] .glass-panel {
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04) !important;
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .glass-panel-hover:hover {
+  background: #f8fafc !important;
+  border-color: rgba(15, 23, 42, 0.2) !important;
+}
+
+/* Fix Hardcoded Dark Inputs & Textareas in Light Mode */
+[data-theme="light"] input:not([type="range"]),
+[data-theme="light"] select,
+[data-theme="light"] textarea {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: rgba(15, 23, 42, 0.2) !important;
+}
+
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* Fix Hardcoded Dark Background Containers inside cards */
+[data-theme="light"] .bg-gray-950,
+[data-theme="light"] .bg-gray-950\/80,
+[data-theme="light"] .bg-gray-950\/60,
+[data-theme="light"] .bg-gray-950\/50,
+[data-theme="light"] .bg-gray-950\/40,
+[data-theme="light"] .bg-gray-900,
+[data-theme="light"] .bg-gray-900\/60,
+[data-theme="light"] .bg-gray-900\/50,
+[data-theme="light"] .bg-gray-900\/40,
+[data-theme="light"] .bg-black\/60,
+[data-theme="light"] .bg-black\/40,
+[data-theme="light"] .bg-black\/20 {
+  background-color: #f8fafc !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  color: #0f172a !important;
+}
+
+/* Fix Text Contrast in Light Mode */
+[data-theme="light"] .text-white,
+[data-theme="light"] .text-gray-100,
+[data-theme="light"] .text-gray-200,
+[data-theme="light"] .text-gray-300 {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .text-gray-400 {
+  color: #334155 !important;
+}
+
+[data-theme="light"] .text-gray-500 {
+  color: #475569 !important;
+}
+
+[data-theme="light"] .text-gray-600 {
+  color: #64748b !important;
+}
+
+/* Fix Border Contrast in Light Mode */
+[data-theme="light"] .border-border,
+[data-theme="light"] .border-border\/80,
+[data-theme="light"] .border-border\/50,
+[data-theme="light"] .border-border\/40,
+[data-theme="light"] .border-white\/10,
+[data-theme="light"] .border-white\/5 {
+  border-color: rgba(15, 23, 42, 0.15) !important;
+}
+
+/* Fix Status Pill Badges in Light Mode */
+[data-theme="light"] .bg-emerald-950,
+[data-theme="light"] .bg-emerald-950\/60,
+[data-theme="light"] .bg-emerald-950\/40,
+[data-theme="light"] .bg-emerald-950\/30,
+[data-theme="light"] .bg-emerald-950\/20 {
+  background-color: #ecfdf5 !important;
+  color: #047857 !important;
+  border-color: #a7f3d0 !important;
+}
+[data-theme="light"] .text-emerald-400,
+[data-theme="light"] .text-emerald-300 {
+  color: #047857 !important;
+}
+
+[data-theme="light"] .bg-indigo-950,
+[data-theme="light"] .bg-indigo-950\/60,
+[data-theme="light"] .bg-indigo-950\/40,
+[data-theme="light"] .bg-indigo-950\/30,
+[data-theme="light"] .bg-indigo-950\/20 {
+  background-color: #eef2ff !important;
+  color: #4338ca !important;
+  border-color: #c7d2fe !important;
+}
+[data-theme="light"] .text-indigo-400,
+[data-theme="light"] .text-indigo-300,
+[data-theme="light"] .text-indigo-200 {
+  color: #4338ca !important;
+}
+
+[data-theme="light"] .bg-rose-950,
+[data-theme="light"] .bg-rose-950\/60,
+[data-theme="light"] .bg-rose-950\/40,
+[data-theme="light"] .bg-rose-950\/30,
+[data-theme="light"] .bg-rose-950\/20 {
+  background-color: #fff1f2 !important;
+  color: #be123c !important;
+  border-color: #fecdd3 !important;
+}
+[data-theme="light"] .text-rose-400,
+[data-theme="light"] .text-rose-300 {
+  color: #be123c !important;
+}
+
+[data-theme="light"] .bg-amber-950,
+[data-theme="light"] .bg-amber-950\/60,
+[data-theme="light"] .bg-amber-950\/40,
+[data-theme="light"] .bg-amber-950\/30,
+[data-theme="light"] .bg-amber-950\/20 {
+  background-color: #fffbeb !important;
+  color: #b45309 !important;
+  border-color: #fde68a !important;
+}
+[data-theme="light"] .text-amber-400,
+[data-theme="light"] .text-amber-300 {
+  color: #b45309 !important;
+}
+
+[data-theme="light"] .bg-sky-950,
+[data-theme="light"] .bg-sky-950\/60,
+[data-theme="light"] .bg-sky-950\/40,
+[data-theme="light"] .bg-sky-950\/30,
+[data-theme="light"] .bg-sky-950\/20 {
+  background-color: #f0f9ff !important;
+  color: #0369a1 !important;
+  border-color: #bae6fd !important;
+}
+[data-theme="light"] .text-sky-400,
+[data-theme="light"] .text-sky-300 {
+  color: #0369a1 !important;
+}
+
+/* Buttons in Light Mode */
+[data-theme="light"] button.bg-indigo-600 {
+  background-color: #4f46e5 !important;
+  color: #ffffff !important;
+}
+[data-theme="light"] button.bg-emerald-600 {
+  background-color: #059669 !important;
+  color: #ffffff !important;
+}
+[data-theme="light"] button.bg-amber-600 {
+  background-color: #d97706 !important;
+  color: #ffffff !important;
+}
+
+/* Bed Grid Cards in Light Mode */
+[data-theme="light"] .bg-rose-500\/25,
+[data-theme="light"] .bg-rose-500\/20 {
+  background-color: #ffe4e6 !important;
+  color: #9f1239 !important;
+  border-color: #fecdd3 !important;
+}
+[data-theme="light"] .bg-rose-500\/25 *,
+[data-theme="light"] .bg-rose-500\/20 * {
+  color: #9f1239 !important;
+}
+
+[data-theme="light"] .bg-emerald-500\/20,
+[data-theme="light"] .bg-emerald-500\/25 {
+  background-color: #d1fae5 !important;
+  color: #065f46 !important;
+  border-color: #a7f3d0 !important;
+}
+[data-theme="light"] .bg-emerald-500\/20 *,
+[data-theme="light"] .bg-emerald-500\/25 * {
+  color: #065f46 !important;
+}
+
+[data-theme="light"] .bg-amber-500\/20,
+[data-theme="light"] .bg-amber-500\/25 {
+  background-color: #fef3c7 !important;
+  color: #92400e !important;
+  border-color: #fde68a !important;
+}
+[data-theme="light"] .bg-amber-500\/20 *,
+[data-theme="light"] .bg-amber-500\/25 * {
+  color: #92400e !important;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-panel-hover:hover {
+  background: var(--card-hover-bg);
+  border-color: var(--border);
+  transform: translateY(-2px);
+}
+
+/* Custom Scrollbar for NASA Command Center feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Heartbeat ECG simulator classes */
+.ecg-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawECG 4s linear infinite;
+}
+
+@keyframes drawECG {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Monospace fonts for telemetry */
+.font-mono-telemetry {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: -0.05em;
+}
+
+/* Glowing text utilities */
+.glow-text-critical {
+  text-shadow: 0 0 10px rgba(244, 63, 94, 0.5);
+}
+
+.glow-text-ai {
+  text-shadow: 0 0 12px rgba(99, 102, 241, 0.5);
+}
