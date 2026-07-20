@@ -114,6 +114,7 @@ export interface HospitalBed {
   status: "occupied" | "available" | "cleaning";
   patientName?: string;
 }
+export type Bed = HospitalBed;
 
 export interface EpidemicData {
   name: string;
