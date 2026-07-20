@@ -1125,7 +1125,7 @@ export const useSentinelStore = create<SentinelState>((set, get) => {
       const { offlineQueue } = get();
       if (offlineQueue.length === 0) return;
       
-      logger.info(`Synchronizing ${offlineQueue.length} offline operations...`);
+      console.log(`Synchronizing ${offlineQueue.length} offline operations...`);
       
       // Execute each action locally
       offlineQueue.forEach(action => {
